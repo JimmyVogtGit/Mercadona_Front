@@ -1,7 +1,5 @@
-import React from "react";
-
 function Homepage() {
-  return <div>Bienvenue sur le site de Mercadona</div>;
+  return <h1>Bienvenue sur le site de Mercadona </h1>;
 }
 
 export default Homepage;
