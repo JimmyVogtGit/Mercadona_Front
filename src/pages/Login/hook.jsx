@@ -14,10 +14,7 @@ function useFormHandler(defaultValues = {}) {
   const onSubmit = async (data) => {
     console.log("data", data);
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/admin",
-        data
-      );
+      const response = await axios.post("http://127.0.0.1:8000", data);
       console.log(response.data); // Affiche les données de la réponse dans la console
     } catch (error) {
       console.error(error);

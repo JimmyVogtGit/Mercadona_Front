@@ -1,6 +1,6 @@
 import hook from "./hook";
 
-function index() {
+function login() {
   const { register, handleSubmit, errors, onSubmit } = hook();
 
   return (
@@ -9,7 +9,7 @@ function index() {
         <label htmlFor="userName">Nom d&apos;utilisateur</label>
         <input {...register("userName", { required: true })} />
         {errors.userName && <span>Le champ nom utilisateur est requis</span>}
-        <label htmlFor="password">Nom :</label>
+        <label htmlFor="password">Password :</label>
         <input {...register("password", { required: true })} />
         {errors.password && <span>Le champ password est requis</span>}
         <input type="submit" disabled={false} />
@@ -18,4 +18,4 @@ function index() {
   );
 }
 
-export default index;
+export default login;
