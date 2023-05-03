@@ -1,5 +1,21 @@
+import hook from "./hook";
+
 function index() {
-  return <div>ici la page admin</div>;
+  const { register, handleSubmit, errors, onSubmit } = hook();
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor="userName">Nom d&apos;utilisateur</label>
+        <input {...register("userName", { required: true })} />
+        {errors.userName && <span>Le champ nom utilisateur est requis</span>}
+        <label htmlFor="password">Nom :</label>
+        <input {...register("password", { required: true })} />
+        {errors.password && <span>Le champ password est requis</span>}
+        <input type="submit" disabled={false} />
+      </form>
+    </div>
+  );
 }
 
 export default index;
