@@ -41,7 +41,6 @@ function useFormHandler(defaultValues = {}) {
       );
       setBackResponse(response);
     } catch (error) {
-      console.log("error", error);
       setBackResponse(error);
     }
   };
