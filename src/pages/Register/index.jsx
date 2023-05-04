@@ -1,8 +1,8 @@
 import hook from "./hook";
 
 function register() {
-  const { register, handleSubmit, errors, onSubmit } = hook();
-
+  const { register, handleSubmit, errors, onSubmit, backResponse } = hook();
+  console.log("backResponse", backResponse);
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
