@@ -15,7 +15,7 @@ function useFormHandler(defaultValues = {}) {
   });
 
   const [backResponse, setBackResponse] = useState({});
-  const { userList, setLastUser } = useContext(AuthContext);
+  const { isLog, userList, setLastUser } = useContext(AuthContext);
 
   useEffect(() => {
     Object.keys(backResponse).length !== 0 &&
@@ -49,7 +49,7 @@ function useFormHandler(defaultValues = {}) {
     }
   };
 
-  return { register, handleSubmit, reset, errors, onSubmit, userList };
+  return { register, handleSubmit, reset, errors, onSubmit, userList, isLog };
 }
 
 export default useFormHandler;

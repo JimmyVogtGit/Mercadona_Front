@@ -1,4 +1,5 @@
 import hook from "./hook";
+import Modal from "../../components/Modal";
 
 function login() {
   const {
@@ -7,7 +8,8 @@ function login() {
     errors,
     onSubmit,
     isLog,
-
+    modalIsOpen,
+    setModalIsOpen,
     username,
   } = hook();
 
@@ -26,6 +28,8 @@ function login() {
       ) : (
         <div>
           <h1>Bienvenue {username}</h1>
+          <button onClick={() => setModalIsOpen(true)}>Creer un produit</button>
+          {modalIsOpen && <Modal setModalIsOpen={setModalIsOpen} />}
         </div>
       )}
     </div>

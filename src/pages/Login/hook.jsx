@@ -17,6 +17,7 @@ function useFormHandler(defaultValues = {}) {
 
   const { isLog, setIsLog, username } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
     (isLog || errorMessage.length !== 0) &&
@@ -62,6 +63,8 @@ function useFormHandler(defaultValues = {}) {
     onSubmit,
     isLog,
     username,
+    modalIsOpen,
+    setModalIsOpen,
   };
 }
 
