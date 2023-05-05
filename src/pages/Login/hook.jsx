@@ -3,6 +3,7 @@ import axios from "axios";
 import { useContext, useEffect } from "react";
 import Toastify from "toastify-js";
 import { AuthContext } from "../../store/AuthContext";
+import { useState } from "react";
 
 function useFormHandler(defaultValues = {}) {
   const {
@@ -15,12 +16,12 @@ function useFormHandler(defaultValues = {}) {
   });
 
   const { isLog, setIsLog, username } = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    isLog &&
+    (isLog || errorMessage.length !== 0) &&
       Toastify({
-        text: isLog ? "bienvenue !" : "Mot de passe ou identifiant incorrects",
-
+        text: isLog ? "bienvenue !" : errorMessage,
         duration: 3000,
         style: {
           textalign: "center",
@@ -31,7 +32,7 @@ function useFormHandler(defaultValues = {}) {
           color: "#ffffff",
         },
       }).showToast();
-  }, [isLog]);
+  }, [isLog, errorMessage]);
 
   const onSubmit = async (data) => {
     try {
@@ -45,6 +46,8 @@ function useFormHandler(defaultValues = {}) {
         localStorage.setItem("isConnect", true);
         localStorage.setItem("userName", response.data.userName);
         reset();
+      } else {
+        setErrorMessage("Mot de passe ou identifiant incorrects");
       }
     } catch (error) {
       setIsLog(false);
