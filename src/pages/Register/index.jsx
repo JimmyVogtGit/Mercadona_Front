@@ -1,8 +1,8 @@
 import hook from "./hook";
 
 function register() {
-  const { register, handleSubmit, errors, onSubmit, backResponse } = hook();
-  console.log("backResponse", backResponse);
+  const { register, handleSubmit, errors, onSubmit, userList } = hook();
+
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -24,6 +24,13 @@ function register() {
         {errors.password && <span>Le champ password est requis</span>}
         <input type="submit" disabled={false} />
       </form>
+      <ul>
+        {userList.map((user, index) => (
+          <li
+            key={index}
+          >{`utilisateur : ${user.name}. adresse mail : ${user.email}`}</li>
+        ))}
+      </ul>
     </div>
   );
 }

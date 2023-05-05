@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import hook from "./hook";
 
 function Browse() {
+  const { isLog, deleteStorage } = hook();
   return (
     <>
       <nav>
@@ -12,6 +14,14 @@ function Browse() {
             {" "}
             <Link to="/login">Espace Admin</Link>
           </li>
+          {isLog && (
+            <li>
+              {" "}
+              <Link to="/login" onClick={() => deleteStorage()}>
+                Deconnexion
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
     </>
