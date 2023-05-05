@@ -1,7 +1,15 @@
 import hook from "./hook";
 
 function login() {
-  const { register, handleSubmit, errors, onSubmit, isLog } = hook();
+  const {
+    register,
+    handleSubmit,
+    errors,
+    onSubmit,
+    isLog,
+
+    username,
+  } = hook();
 
   return (
     <div>
@@ -17,7 +25,7 @@ function login() {
         </form>
       ) : (
         <div>
-          <h1>Bienvenue AdminName</h1>
+          <h1>Bienvenue {username}</h1>
         </div>
       )}
     </div>

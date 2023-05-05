@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import Toastify from "toastify-js";
 import { AuthContext } from "../../store/AuthContext";
 
@@ -13,29 +13,25 @@ function useFormHandler(defaultValues = {}) {
   } = useForm({
     defaultValues,
   });
-  const [backResponse, setBackResponse] = useState({});
-  const { isLog, setIsLog } = useContext(AuthContext);
+
+  const { isLog, setIsLog, username } = useContext(AuthContext);
 
   useEffect(() => {
-    Object.keys(backResponse).length !== 0 &&
+    isLog &&
       Toastify({
-        text:
-          Object.keys(backResponse).length !== 0 &&
-          (backResponse.data.success === true
-            ? "bienvenue !"
-            : "Mot de passe ou identifiant incorrects"),
+        text: isLog ? "bienvenue !" : "Mot de passe ou identifiant incorrects",
 
         duration: 3000,
         style: {
           textalign: "center",
-          background: backResponse.data.success
+          background: isLog
             ? "linear-gradient(to right, #00b09b, #96c93d)"
             : "linear-gradient(to right, #ec6889, #e62a2a)",
 
           color: "#ffffff",
         },
       }).showToast();
-  }, [backResponse, isLog]);
+  }, [isLog]);
 
   const onSubmit = async (data) => {
     try {
@@ -43,17 +39,27 @@ function useFormHandler(defaultValues = {}) {
         "http://127.0.0.1:8000/login-user/",
         data
       );
-      setBackResponse(response);
+
       if (response.data.success === true) {
         setIsLog(true);
         localStorage.setItem("isConnect", true);
+        localStorage.setItem("userName", response.data.userName);
+        reset();
       }
     } catch (error) {
-      setBackResponse(error);
+      setIsLog(false);
     }
   };
 
-  return { register, handleSubmit, reset, errors, onSubmit, isLog };
+  return {
+    register,
+    handleSubmit,
+    reset,
+    errors,
+    onSubmit,
+    isLog,
+    username,
+  };
 }
 
 export default useFormHandler;

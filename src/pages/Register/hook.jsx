@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Toastify from "toastify-js";
+import { AuthContext } from "../../store/AuthContext";
 
 function useFormHandler(defaultValues = {}) {
   const {
@@ -14,13 +15,14 @@ function useFormHandler(defaultValues = {}) {
   });
 
   const [backResponse, setBackResponse] = useState({});
+  const { userList, setLastUser } = useContext(AuthContext);
 
   useEffect(() => {
     Object.keys(backResponse).length !== 0 &&
       Toastify({
         text:
           Object.keys(backResponse).length !== 0 &&
-          (backResponse.data.success || backResponse.data.error),
+          (backResponse.data.message || backResponse.data.error),
         duration: 3000,
         style: {
           textalign: "center",
@@ -34,18 +36,20 @@ function useFormHandler(defaultValues = {}) {
   }, [backResponse]);
 
   const onSubmit = async (data) => {
+    console.log("data", data);
     try {
       const response = await axios.post(
         "http://127.0.0.1:8000/create-user/",
         data
       );
       setBackResponse(response);
+      setLastUser(data.name);
     } catch (error) {
       setBackResponse(error);
     }
   };
 
-  return { register, handleSubmit, reset, errors, onSubmit, backResponse };
+  return { register, handleSubmit, reset, errors, onSubmit, userList };
 }
 
 export default useFormHandler;
