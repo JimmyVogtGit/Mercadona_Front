@@ -2,7 +2,8 @@ import hook from "./hook";
 import { ModalOverlay, ModalContainer, FormContainer } from "./styles";
 
 function modal({ setModalIsOpen }) {
-  const { register, handleSubmit, reset, errors, onSubmit } = hook();
+  const { register, handleSubmit, reset, errors, onSubmit, categoryList } =
+    hook();
 
   return (
     <ModalOverlay>
@@ -10,8 +11,8 @@ function modal({ setModalIsOpen }) {
         <button onClick={() => setModalIsOpen(false)}>click</button>
         <h1>{"Creation d'un produit"}</h1>
         <FormContainer onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="libelle">Libellé</label>
-          <input {...register("libelle", { required: true })} />
+          <label htmlFor="wording">Libellé</label>
+          <input {...register("wording", { required: true })} />
           <label htmlFor="describe">Description</label>
           <input {...register("describe", { required: true })} />
           <label htmlFor="price">Prix</label>
@@ -22,9 +23,16 @@ function modal({ setModalIsOpen }) {
             {...register("price", { required: true })}
           />
           <label htmlFor="category">Category</label>
-          <input {...register("category", { required: true })} />
-          <label htmlFor="image">Ajouter une image :</label>
-          <input type="file" {...register("image", { required: true })} />
+          <select {...register("category", { required: true })}>
+            {categoryList.map((cat) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.name}
+              </option>
+            ))}
+          </select>
+
+          {/* <label htmlFor="image">Ajouter une image :</label>
+          <input type="file" {...register("image", { required: true })} /> */}
 
           <input type="submit" disabled={false} />
         </FormContainer>

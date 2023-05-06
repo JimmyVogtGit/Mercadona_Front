@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../store/AuthContext";
 
 function useModalHook() {
   const {
@@ -10,11 +11,7 @@ function useModalHook() {
     formState: { errors },
   } = useForm();
 
-  const [image, setImage] = useState(null);
-  const handleImageChange = (e) => {
-    const selectedImage = e.target.files[0];
-    setImage(selectedImage);
-  };
+  const { categoryList } = useContext(AuthContext);
 
   const onSubmit = async (data) => {
     console.log("data", data);
@@ -23,10 +20,13 @@ function useModalHook() {
         "http://127.0.0.1:8000/create-product/",
         data
       );
-    } catch (error) {}
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  return { register, handleSubmit, reset, errors, onSubmit, handleImageChange };
+  return { register, handleSubmit, reset, errors, onSubmit, categoryList };
 }
 
 export default useModalHook;
