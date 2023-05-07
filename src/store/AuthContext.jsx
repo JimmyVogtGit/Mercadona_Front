@@ -8,6 +8,7 @@ function AuthProvider({ children }) {
   const [isLog, setIsLog] = useState();
   const [username, setUsername] = useState("");
   const [userList, setUserList] = useState([]);
+  const [categoryList, setCategoryList] = useState([]);
   const [lastUser, setLastUser] = useState("");
   const deleteStorage = () => {
     localStorage.removeItem("isConnect");
@@ -17,8 +18,16 @@ function AuthProvider({ children }) {
   const getUser = async () => {
     try {
       const response = await axios.get("http://127.0.0.1:8000/users-list/");
-      console.log("response", response);
       setUserList(response.data);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+  const getCategory = async () => {
+    try {
+      const response = await axios.get("http://127.0.0.1:8000/category-list/");
+      console.log("response category", response);
+      setCategoryList(response.data);
     } catch (err) {
       console.log("err", err);
     }
@@ -29,6 +38,7 @@ function AuthProvider({ children }) {
     isConnect !== null ? setIsLog(true) : setIsLog(false);
     if (isUsername !== null) setUsername(isUsername);
     getUser();
+    getCategory();
   }, [isLog, lastUser]);
 
   return (
@@ -41,6 +51,8 @@ function AuthProvider({ children }) {
         setUsername,
         userList,
         setLastUser,
+        categoryList,
+        setCategoryList,
       }}
     >
       {children}
