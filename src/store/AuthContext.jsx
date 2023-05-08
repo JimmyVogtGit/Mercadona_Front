@@ -9,13 +9,14 @@ function AuthProvider({ children }) {
   const [username, setUsername] = useState("");
   const [userList, setUserList] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
+  const [productList, setProductList] = useState([]);
   const [lastUser, setLastUser] = useState("");
   const deleteStorage = () => {
     localStorage.removeItem("isConnect");
     localStorage.removeItem("userName");
     setIsLog(false);
   };
-  const getUser = async () => {
+  const getUsers = async () => {
     try {
       const response = await axios.get("http://127.0.0.1:8000/users-list/");
       setUserList(response.data);
@@ -23,22 +24,33 @@ function AuthProvider({ children }) {
       console.log("err", err);
     }
   };
-  const getCategory = async () => {
+  const getCategories = async () => {
     try {
       const response = await axios.get("http://127.0.0.1:8000/category-list/");
-      console.log("response category", response);
       setCategoryList(response.data);
     } catch (err) {
       console.log("err", err);
     }
   };
+
+  const getProducts = async () => {
+    try {
+      const response = await axios.get("http://127.0.0.1:8000/products-list/");
+      console.log("response product", response.data);
+      setProductList(response.data);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+
   useEffect(() => {
     const isConnect = localStorage.getItem("isConnect");
     const isUsername = localStorage.getItem("userName");
     isConnect !== null ? setIsLog(true) : setIsLog(false);
     if (isUsername !== null) setUsername(isUsername);
-    getUser();
-    getCategory();
+    getUsers();
+    getCategories();
+    getProducts();
   }, [isLog, lastUser]);
 
   return (
@@ -53,6 +65,7 @@ function AuthProvider({ children }) {
         setLastUser,
         categoryList,
         setCategoryList,
+        productList,
       }}
     >
       {children}
