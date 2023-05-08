@@ -1,6 +1,7 @@
 import hook from "./hook";
 import Modal from "../../components/Modal";
-
+import Product from "../../components/Product";
+import { ProductContainer } from "./styles";
 function login() {
   const {
     register,
@@ -11,6 +12,7 @@ function login() {
     modalIsOpen,
     setModalIsOpen,
     username,
+    productList,
   } = hook();
 
   return (
@@ -30,6 +32,13 @@ function login() {
           <h1>Bienvenue {username}</h1>
           <button onClick={() => setModalIsOpen(true)}>Creer un produit</button>
           {modalIsOpen && <Modal setModalIsOpen={setModalIsOpen} />}
+          <ProductContainer>
+            {productList.map((product, index) => {
+              return (
+                <Product key={index} wording={product.wording} isLog={isLog} />
+              );
+            })}
+          </ProductContainer>
         </div>
       )}
     </div>
