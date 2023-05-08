@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import hook from "./hook";
+import { ListContainer } from "./styles";
 
 function Browse() {
   const { isLog, deleteStorage } = hook();
   return (
     <>
       <nav>
-        <ul>
+        <ListContainer>
           <li>
             <Link to="/catalog">Catalogue</Link>
           </li>
@@ -22,7 +23,7 @@ function Browse() {
               </Link>
             </li>
           )}
-        </ul>
+        </ListContainer>
       </nav>
     </>
   );
