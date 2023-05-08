@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import close from "../../assets/img/close.png";
 
 export const ModalOverlay = styled.div`
   position: fixed;
@@ -28,4 +29,17 @@ export const FormContainer = styled.form`
   input {
     width: 70%;
   }
+`;
+
+export const CloseModal = styled.button`
+  position: relative;
+  right: -275px;
+  top: 10px;
+  width: 27px;
+  height: 59px;
+  background-color: transparent;
+  border: none;
+  background-image: url(${close});
+  background-size: contain;
+  background-repeat: no-repeat;
 `;

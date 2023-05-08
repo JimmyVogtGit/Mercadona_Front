@@ -5,6 +5,9 @@ export const ProductContainer = styled.div`
   height: 100%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 
-  padding: 50px;
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
 `;

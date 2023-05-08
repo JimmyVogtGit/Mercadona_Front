@@ -20,27 +20,30 @@ function AuthProvider({ children }) {
     try {
       const response = await axios.get("http://127.0.0.1:8000/users-list/");
       setUserList(response.data);
-    } catch (err) {
-      console.log("err", err);
-    }
+    } catch (err) {}
   };
   const getCategories = async () => {
     try {
       const response = await axios.get("http://127.0.0.1:8000/category-list/");
       setCategoryList(response.data);
-    } catch (err) {
-      console.log("err", err);
-    }
+    } catch (err) {}
   };
 
   const getProducts = async () => {
     try {
       const response = await axios.get("http://127.0.0.1:8000/products-list/");
-      console.log("response product", response.data);
+
       setProductList(response.data);
-    } catch (err) {
-      console.log("err", err);
-    }
+    } catch (err) {}
+  };
+
+  const postProduct = async (data) => {
+    try {
+      const reponse = await axios.post(
+        "http://127.0.0.1:8000/post-product/",
+        data
+      );
+    } catch (err) {}
   };
 
   useEffect(() => {
@@ -66,6 +69,7 @@ function AuthProvider({ children }) {
         categoryList,
         setCategoryList,
         productList,
+        postProduct,
       }}
     >
       {children}
