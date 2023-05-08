@@ -31,11 +31,21 @@ function login() {
         <div>
           <h1>Bienvenue {username}</h1>
           <button onClick={() => setModalIsOpen(true)}>Creer un produit</button>
-          {modalIsOpen && <Modal setModalIsOpen={setModalIsOpen} />}
+          {modalIsOpen && (
+            <Modal type="PRODUCT" setModalIsOpen={setModalIsOpen} />
+          )}
           <ProductContainer>
             {productList.map((product, index) => {
               return (
-                <Product key={index} wording={product.wording} isLog={isLog} />
+                <Product
+                  key={index}
+                  id={product.id}
+                  wording={product.wording}
+                  describe={product.describe}
+                  price={product.price}
+                  isLog={isLog}
+                  promotion={product.promotion}
+                />
               );
             })}
           </ProductContainer>

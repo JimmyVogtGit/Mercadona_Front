@@ -36,7 +36,6 @@ function useFormHandler(defaultValues = {}) {
   }, [backResponse]);
 
   const onSubmit = async (data) => {
-    console.log("data", data);
     try {
       const response = await axios.post(
         "http://127.0.0.1:8000/create-user/",
