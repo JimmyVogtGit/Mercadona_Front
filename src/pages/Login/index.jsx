@@ -1,7 +1,7 @@
 import hook from "./hook";
 import Modal from "../../components/Modal";
 import Product from "../../components/Product";
-import { ProductContainer } from "./styles";
+import { ProductContainer, LoginContainer } from "./styles";
 function login() {
   const {
     register,
@@ -16,7 +16,7 @@ function login() {
   } = hook();
 
   return (
-    <div>
+    <>
       {!isLog ? (
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="name">Nom d&apos;utilisateur</label>
@@ -28,7 +28,7 @@ function login() {
           <input type="submit" disabled={false} />
         </form>
       ) : (
-        <div>
+        <LoginContainer>
           <h1>Bienvenue {username}</h1>
           <button onClick={() => setModalIsOpen(true)}>Creer un produit</button>
           {modalIsOpen && (
@@ -49,9 +49,9 @@ function login() {
               );
             })}
           </ProductContainer>
-        </div>
+        </LoginContainer>
       )}
-    </div>
+    </>
   );
 }
 
