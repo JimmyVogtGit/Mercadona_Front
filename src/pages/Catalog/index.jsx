@@ -4,12 +4,13 @@ import {
   ListCatalogContainer,
   AsideContainer,
   CatalogContainer,
+  Container,
 } from "./styles";
 
 function Catalog() {
   const { isLog, categoryList, filterCat, filteredCat } = hook();
   return (
-    <div>
+    <Container>
       <h1>Catalogue Mercadona</h1>
       <CatalogContainer>
         <AsideContainer>
@@ -43,7 +44,7 @@ function Catalog() {
           )}
         </ListCatalogContainer>
       </CatalogContainer>
-    </div>
+    </Container>
   );
 }
 
