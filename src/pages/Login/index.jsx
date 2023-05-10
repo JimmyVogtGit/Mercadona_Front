@@ -19,8 +19,8 @@ function login() {
     <>
       {!isLog ? (
         <form onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="name">Nom d&apos;utilisateur</label>
-          <input {...register("name", { required: true })} />
+          <label htmlFor="username">Nom d&apos;utilisateur</label>
+          <input {...register("username", { required: true })} />
           {errors.userName && <span>Le champ nom utilisateur est requis</span>}
           <label htmlFor="password">Password :</label>
           <input {...register("password", { required: true })} />
