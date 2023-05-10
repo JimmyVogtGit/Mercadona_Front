@@ -36,16 +36,19 @@ function useFormHandler(defaultValues = {}) {
   }, [isLog, errorMessage]);
 
   const onSubmit = async (data) => {
+    console.log("data", data);
     try {
       const response = await axios.post(
         "http://127.0.0.1:8000/login-user/",
         data
       );
 
-      if (response.data.success === true) {
+      if (response.status === 200) {
         setIsLog(true);
+        console.log("data là", response);
+        localStorage.setItem("jwt", response.data.access);
         localStorage.setItem("isConnect", true);
-        localStorage.setItem("userName", response.data.userName);
+        localStorage.setItem("userName", data.username);
         reset();
       } else {
         setErrorMessage("Mot de passe ou identifiant incorrects");

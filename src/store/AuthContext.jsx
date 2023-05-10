@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 
 export const AuthContext = createContext();
+const token = localStorage.getItem("jwt");
 
 function AuthProvider({ children }) {
   const [isLog, setIsLog] = useState();
@@ -16,9 +17,15 @@ function AuthProvider({ children }) {
     localStorage.removeItem("userName");
     setIsLog(false);
   };
+
   const getUsers = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/users-list/");
+      const response = await axios.get("http://127.0.0.1:8000/users-list/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+      });
       setUserList(response.data);
     } catch (err) {}
   };
