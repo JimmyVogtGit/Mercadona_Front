@@ -1,7 +1,7 @@
 import hook from "./hook";
 import Modal from "../../components/Modal";
 import Product from "../../components/Product";
-import { ProductContainer, LoginContainer } from "./styles";
+import { ProductContainer, LoginContainer, FormContainer } from "./styles";
 function login() {
   const {
     register,
@@ -18,15 +18,19 @@ function login() {
   return (
     <>
       {!isLog ? (
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="username">Nom d&apos;utilisateur</label>
-          <input {...register("username", { required: true })} />
-          {errors.userName && <span>Le champ nom utilisateur est requis</span>}
-          <label htmlFor="password">Password :</label>
-          <input {...register("password", { required: true })} />
-          {errors.password && <span>Le champ password est requis</span>}
-          <input type="submit" disabled={false} />
-        </form>
+        <FormContainer>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <label htmlFor="username">Nom d&apos;utilisateur</label>
+            <input {...register("username", { required: true })} />
+            {errors.userName && (
+              <span>Le champ nom utilisateur est requis</span>
+            )}
+            <label htmlFor="password">Password :</label>
+            <input {...register("password", { required: true })} />
+            {errors.password && <span>Le champ password est requis</span>}
+            <input type="submit" disabled={false} />
+          </form>
+        </FormContainer>
       ) : (
         <LoginContainer>
           <h1>Bienvenue {username}</h1>

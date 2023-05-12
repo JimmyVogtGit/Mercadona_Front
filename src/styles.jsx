@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 
 export const HeaderStyle = styled.header`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  background-color: white;
+  padding: 20px;
 
   @media only screen and (max-width: 600px) {
     flex-direction: column;
