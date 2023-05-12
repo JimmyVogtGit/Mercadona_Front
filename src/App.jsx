@@ -6,14 +6,16 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Browse from "./components/Browse";
-import { HeaderStyle, LinkStyle } from "./styles";
+import { HeaderStyle, LinkStyle, SpanContainer } from "./styles";
 
 function App() {
   return (
     <>
       <HeaderStyle>
         <LinkStyle to="/">
-          <h1>Mercadona Retail</h1>
+          <h1>
+            Mercadona <SpanContainer>Retail</SpanContainer>
+          </h1>
         </LinkStyle>
 
         <Browse />

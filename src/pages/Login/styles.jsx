@@ -22,7 +22,7 @@ export const ProductContainer = styled.div`
 export const FormContainer = styled.div`
   width: 100%;
   height: 100%;
-  background-color: red;
+
   display: flex;
   align-items: center;
   justify-content: center;
