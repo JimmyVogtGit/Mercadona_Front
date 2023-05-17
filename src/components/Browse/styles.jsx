@@ -4,6 +4,7 @@ export const ListContainer = styled.ul`
   display: flex;
   align-items: center;
   list-style-type: none;
+  padding: 0;
 
   a {
     text-decoration: none;

@@ -20,25 +20,32 @@ function AuthProvider({ children }) {
 
   const getUsers = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/users-list/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        `${import.meta.env.VITE_DEPLOY_ENDPOINT}/users-list/`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        }
+      );
       setUserList(response.data);
     } catch (err) {}
   };
   const getCategories = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/category-list/");
+      const response = await axios.get(
+        `${import.meta.env.VITE_DEPLOY_ENDPOINT}/category-list/`
+      );
       setCategoryList(response.data);
     } catch (err) {}
   };
 
   const getProducts = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/products-list/");
+      const response = await axios.get(
+        `${import.meta.env.VITE_DEPLOY_ENDPOINT}/products-list/`
+      );
 
       setProductList(response.data);
     } catch (err) {}
@@ -47,7 +54,7 @@ function AuthProvider({ children }) {
   const postProduct = async (data) => {
     try {
       const reponse = await axios.post(
-        "http://127.0.0.1:8000/post-product/",
+        `${import.meta.env.VITE_DEPLOY_ENDPOINT}/post-product/`,
         data
       );
     } catch (err) {}

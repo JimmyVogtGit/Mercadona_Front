@@ -11,6 +11,7 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-header > h1 {
+h1 {
   font-family: "jua" sans-serif;
+  color: #275c80;
 }
