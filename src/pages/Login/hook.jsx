@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
+
 import axios from "axios";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import Toastify from "toastify-js";
 import { AuthContext } from "../../store/AuthContext";
-import { useState } from "react";
 
 function useFormHandler(defaultValues = {}) {
   const {
@@ -18,6 +18,7 @@ function useFormHandler(defaultValues = {}) {
   const { isLog, setIsLog, username, productList } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     (isLog || errorMessage.length !== 0) &&
@@ -39,7 +40,7 @@ function useFormHandler(defaultValues = {}) {
     console.log("data", data);
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/login-user/",
+        `${import.meta.env.VITE_DEPLOY_ENDPOINT}/login-user/`,
         data
       );
 
@@ -69,6 +70,8 @@ function useFormHandler(defaultValues = {}) {
     modalIsOpen,
     setModalIsOpen,
     productList,
+    showPassword,
+    setShowPassword,
   };
 }
 

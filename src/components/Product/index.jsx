@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { ProductContainer, PromoContainer } from "./styles";
+import { ProductContainer, PromoContainer, DescribeContainer } from "./styles";
 import img from "../../assets/img/beauTemps.jpg";
 import hook from "./hook";
 import Modal from "../Modal";
@@ -17,8 +17,8 @@ function Product({ isLog, wording, describe, price, id, promotion }) {
         />
       )}
       <img src={img} alt="img-product" />
-      <h1>{wording}</h1>
-      <p>{describe}</p>
+      <h2>{wording}</h2>
+      <DescribeContainer>{describe}</DescribeContainer>
       {promotion.length === 0 ? (
         <p>{price} e</p>
       ) : (
