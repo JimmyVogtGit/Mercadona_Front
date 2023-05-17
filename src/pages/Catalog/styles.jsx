@@ -4,17 +4,20 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  @media only screen and (max-width: 600px) {
+  }
 `;
 export const CatalogContainer = styled.div`
   display: flex;
   align-items: center;
-
-  margin: 0 0 0 200px;
   width: 80%;
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 export const ListCatalogContainer = styled.div`
-  width: 100%;
   height: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -27,29 +30,35 @@ export const ListCatalogContainer = styled.div`
 `;
 
 export const AsideContainer = styled.aside`
-  margin-left: 20px;
-  position: fixed;
-  left: 20px;
-  top: 200px;
   ul {
-    list-style-type: none;
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    justify-content: center;
+    list-style-type: none;
     border-radius: 10px;
+    background-color: rgb(224, 39, 39);
+    color: white;
+    height: auto;
+    padding: 0;
   }
   li {
     cursor: pointer;
+    padding: 6px;
     margin: 5px;
-    width: 80px;
   }
   li:hover {
-    background-color: #7ea4af40;
+    color: #275c80;
+    text-decoration: underline;
   }
 
   @media only screen and (max-width: 600px) {
     ul {
-      flex-direction: column;
+      flex-direction: row;
+      position: static;
     }
+    width: 100%;
   }
 `;

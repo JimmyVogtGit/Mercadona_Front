@@ -38,7 +38,7 @@ function useFormHandler(defaultValues = {}) {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/create-user/",
+        `${import.meta.env.VITE_DEPLOY_ENDPOINT}/create-user/`,
         data
       );
       setBackResponse(response);

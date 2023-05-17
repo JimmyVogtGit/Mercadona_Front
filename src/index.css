@@ -5,4 +5,13 @@
 
 body {
   margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f2f2f2;
+  font-family: "Roboto", sans-serif;
+}
+
+h1 {
+  font-family: "jua" sans-serif;
+  color: #275c80;
 }

@@ -1,7 +1,18 @@
 import hook from "./hook";
 import Modal from "../../components/Modal";
 import Product from "../../components/Product";
-import { ProductContainer, LoginContainer } from "./styles";
+import {
+  TextField,
+  Button,
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { ProductContainer, LoginContainer, FormContainer } from "./styles";
 function login() {
   const {
     register,
@@ -13,20 +24,55 @@ function login() {
     setModalIsOpen,
     username,
     productList,
+    showPassword,
+    setShowPassword,
   } = hook();
 
   return (
     <>
       {!isLog ? (
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="name">Nom d&apos;utilisateur</label>
-          <input {...register("name", { required: true })} />
-          {errors.userName && <span>Le champ nom utilisateur est requis</span>}
-          <label htmlFor="password">Password :</label>
-          <input {...register("password", { required: true })} />
-          {errors.password && <span>Le champ password est requis</span>}
-          <input type="submit" disabled={false} />
-        </form>
+        <FormContainer>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <TextField
+              id="test"
+              label="Nom d'utilisateur"
+              {...register("username", { required: true })}
+              error={errors.username}
+            />
+            <FormControl variant="outlined" id="test">
+              <InputLabel htmlFor="outlined-adornment-password">
+                Mot de Passe
+              </InputLabel>
+              <OutlinedInput
+                id="outlined-adornment-password"
+                type={showPassword ? "text" : "password"}
+                {...register("password", { required: true })}
+                error={errors.username}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={() => setShowPassword(!showPassword)}
+                      // onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                label="Password"
+              />
+            </FormControl>
+            <Button
+              id="test"
+              variant="contained"
+              type="submit"
+              disabled={false}
+            >
+              Soumettre
+            </Button>
+          </form>
+        </FormContainer>
       ) : (
         <LoginContainer>
           <h1>Bienvenue {username}</h1>

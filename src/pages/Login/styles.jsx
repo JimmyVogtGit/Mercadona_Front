@@ -18,3 +18,21 @@ export const ProductContainer = styled.div`
     flex-direction: column;
   }
 `;
+
+export const FormContainer = styled.div`
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #test {
+    margin-top: 10px;
+  }
+`;

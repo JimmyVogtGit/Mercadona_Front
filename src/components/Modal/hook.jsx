@@ -17,20 +17,20 @@ function useModalHook(type) {
     try {
       if (type === "PRODUCT") {
         const response = await axios.post(
-          "http://127.0.0.1:8000/create-product/",
+          `${import.meta.env.VITE_DEPLOY_ENDPOINT}/create-product/`,
           data
         );
-        alert("coucou", response);
+        alert("Produit ajouté avec succès", response);
       }
       if (type === "PROMO") {
         const response = await axios.post(
-          "http://127.0.0.1:8000/create-promotion/",
+          `${import.meta.env.VITE_DEPLOY_ENDPOINT}/create-promotion/`,
           data
         );
-        alert("coucou", response);
+        alert("Promotion ajoutée avec succès", response);
       }
     } catch (error) {
-      alert("coucou", error);
+      alert("Erreur à l'ajout du produit", error);
     }
   };
 
