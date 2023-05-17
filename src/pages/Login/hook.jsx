@@ -15,9 +15,9 @@ function useFormHandler(defaultValues = {}) {
     defaultValues,
   });
 
-  const { isLog, setIsLog, username, productList } = useContext(AuthContext);
+  const { isLog, setIsLog, username, productList, create, setIsModal } =
+    useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
@@ -36,8 +36,9 @@ function useFormHandler(defaultValues = {}) {
       }).showToast();
   }, [isLog, errorMessage]);
 
+  useEffect(() => {}, [create]);
+
   const onSubmit = async (data) => {
-    console.log("data", data);
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_DEPLOY_ENDPOINT}/login-user/`,
@@ -46,7 +47,6 @@ function useFormHandler(defaultValues = {}) {
 
       if (response.status === 200) {
         setIsLog(true);
-        console.log("data là", response);
         localStorage.setItem("jwt", response.data.access);
         localStorage.setItem("isConnect", true);
         localStorage.setItem("userName", data.username);
@@ -67,11 +67,10 @@ function useFormHandler(defaultValues = {}) {
     onSubmit,
     isLog,
     username,
-    modalIsOpen,
-    setModalIsOpen,
     productList,
     showPassword,
     setShowPassword,
+    setIsModal,
   };
 }
 

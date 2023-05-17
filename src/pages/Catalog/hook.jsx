@@ -10,9 +10,11 @@ function useCatalogHook() {
   }, [categoryList]);
 
   const filterCat = (filterName) => {
-    const test = productList.filter((cat) => cat.category === filterName);
+    const filteredCat = productList.filter(
+      (cat) => cat.category === filterName
+    );
 
-    setFilteredCat(test);
+    setFilteredCat(filteredCat);
   };
 
   return { isLog, productList, categoryList, filteredCat, filterCat };

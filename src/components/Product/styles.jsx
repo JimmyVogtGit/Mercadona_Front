@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
 export const ProductContainer = styled.div`
-  height: 400px;
+  height: 500px;
   width: 300px;
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  align-items: center;
   border-radius: 10px;
   padding-bottom: 10px;
   margin: 20px;
@@ -21,7 +24,7 @@ export const ProductContainer = styled.div`
 `;
 
 export const DescribeContainer = styled.p`
-  width: 300px;
+  width: 250px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

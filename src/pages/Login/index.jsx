@@ -1,5 +1,4 @@
 import hook from "./hook";
-import Modal from "../../components/Modal";
 import Product from "../../components/Product";
 import {
   TextField,
@@ -20,12 +19,11 @@ function login() {
     errors,
     onSubmit,
     isLog,
-    modalIsOpen,
-    setModalIsOpen,
     username,
     productList,
     showPassword,
     setShowPassword,
+    setIsModal,
   } = hook();
 
   return (
@@ -34,12 +32,11 @@ function login() {
         <FormContainer>
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
-              id="test"
               label="Nom d'utilisateur"
               {...register("username", { required: true })}
               error={errors.username}
             />
-            <FormControl variant="outlined" id="test">
+            <FormControl variant="outlined">
               <InputLabel htmlFor="outlined-adornment-password">
                 Mot de Passe
               </InputLabel>
@@ -53,7 +50,6 @@ function login() {
                     <IconButton
                       aria-label="toggle password visibility"
                       onClick={() => setShowPassword(!showPassword)}
-                      // onMouseDown={handleMouseDownPassword}
                       edge="end"
                     >
                       {showPassword ? <VisibilityOff /> : <Visibility />}
@@ -63,12 +59,7 @@ function login() {
                 label="Password"
               />
             </FormControl>
-            <Button
-              id="test"
-              variant="contained"
-              type="submit"
-              disabled={false}
-            >
+            <Button variant="contained" type="submit" disabled={false}>
               Soumettre
             </Button>
           </form>
@@ -76,10 +67,13 @@ function login() {
       ) : (
         <LoginContainer>
           <h1>Bienvenue {username}</h1>
-          <button onClick={() => setModalIsOpen(true)}>Creer un produit</button>
-          {modalIsOpen && (
-            <Modal type="PRODUCT" setModalIsOpen={setModalIsOpen} />
-          )}
+          <Button
+            variant="contained"
+            color="success"
+            onClick={() => setIsModal({ isOpen: true, type: "PRODUCT" })}
+          >
+            Creer un produit
+          </Button>
           <ProductContainer>
             {productList.map((product, index) => {
               return (
