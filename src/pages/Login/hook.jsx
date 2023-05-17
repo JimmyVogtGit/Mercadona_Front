@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import Toastify from "toastify-js";
@@ -17,6 +18,7 @@ function useFormHandler(defaultValues = {}) {
   const { isLog, setIsLog, username, productList } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     (isLog || errorMessage.length !== 0) &&
@@ -68,6 +70,8 @@ function useFormHandler(defaultValues = {}) {
     modalIsOpen,
     setModalIsOpen,
     productList,
+    showPassword,
+    setShowPassword,
   };
 }
 

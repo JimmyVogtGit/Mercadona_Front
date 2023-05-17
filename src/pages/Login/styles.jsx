@@ -20,9 +20,9 @@ export const ProductContainer = styled.div`
 `;
 
 export const FormContainer = styled.div`
-  width: 100%;
+  position: absolute;
   height: 100%;
-
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,5 +30,9 @@ export const FormContainer = styled.div`
   form {
     display: flex;
     flex-direction: column;
+  }
+
+  #test {
+    margin-top: 10px;
   }
 `;
