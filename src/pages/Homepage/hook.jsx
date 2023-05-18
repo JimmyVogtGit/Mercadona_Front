@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../store/AuthContext";
 
-function usehook() {
-  return {};
+function useHomepageHook() {
+  const { language, theme } = useContext(AuthContext);
+  return { language, theme };
 }
 
-export default usehook;
+export default useHomepageHook;

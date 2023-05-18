@@ -6,7 +6,7 @@ import hook from "./hook";
 import { Button } from "@mui/material";
 
 function Product({ isLog, wording, describe, price, promotion, id }) {
-  const { setIsModal } = hook();
+  const { setIsModal, language, theme } = hook();
 
   return (
     <>
@@ -20,7 +20,7 @@ function Product({ isLog, wording, describe, price, promotion, id }) {
           <PromoContainer>
             <p>{price} e </p>
             <p>
-              En promotion{" "}
+              {theme.themeText[language].isPromo}{" "}
               {parseInt(price) -
                 (parseInt(price) * parseInt(promotion[0].percentage)) / 100}
               e
@@ -43,7 +43,7 @@ function Product({ isLog, wording, describe, price, promotion, id }) {
               })
             }
           >
-            Ajouter promo
+            {theme.themeButton[language].addPromo}
           </Button>
         )}
       </ProductContainer>

@@ -15,8 +15,16 @@ function useFormHandler(defaultValues = {}) {
     defaultValues,
   });
 
-  const { isLog, setIsLog, username, productList, create, setIsModal } =
-    useContext(AuthContext);
+  const {
+    isLog,
+    setIsLog,
+    username,
+    productList,
+    create,
+    setIsModal,
+    language,
+    theme,
+  } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
@@ -71,6 +79,8 @@ function useFormHandler(defaultValues = {}) {
     showPassword,
     setShowPassword,
     setIsModal,
+    language,
+    theme,
   };
 }
 
