@@ -1,6 +1,9 @@
+import { HomepageContainer } from "./styles";
+import hook from "./hook";
+
 function Homepage() {
   return (
-    <>
+    <HomepageContainer>
       <h1>Bienvenue sur le site de Mercadona </h1>
       <div>
         <section>
@@ -33,7 +36,7 @@ function Homepage() {
           </p>
         </section>
       </div>
-    </>
+    </HomepageContainer>
   );
 }
 

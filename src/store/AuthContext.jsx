@@ -19,6 +19,8 @@ function AuthProvider({ children }) {
     id: null,
     wording: "",
   });
+
+  const [data, setData] = useState([]);
   const deleteStorage = () => {
     localStorage.removeItem("isConnect");
     localStorage.removeItem("userName");
