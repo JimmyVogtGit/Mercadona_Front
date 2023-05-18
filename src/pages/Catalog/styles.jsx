@@ -55,10 +55,12 @@ export const AsideContainer = styled.aside`
   }
 
   @media only screen and (max-width: 600px) {
+    width: 100%;
     ul {
       flex-direction: row;
       position: static;
+      overflow-x: auto;
+      white-space: nowrap;
     }
-    width: 100%;
   }
 `;
