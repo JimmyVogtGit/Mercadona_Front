@@ -9,7 +9,12 @@ import {
   InputAdornment,
 } from "@mui/material";
 
-import { ModalOverlay, ModalContainer, FormContainer } from "./styles";
+import {
+  ModalOverlay,
+  ModalContainer,
+  FormContainer,
+  Container,
+} from "./styles";
 
 function modal() {
   const {
@@ -25,9 +30,8 @@ function modal() {
   } = hook();
 
   return (
-    <>
+    <Container>
       <ModalOverlay onClick={() => setIsModal({ isOpen: false })} />
-
       <ModalContainer>
         {isModal.type === "PRODUCT" && (
           <>
@@ -111,7 +115,7 @@ function modal() {
           </>
         )}
       </ModalContainer>
-    </>
+    </Container>
   );
 }
 

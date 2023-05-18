@@ -1,5 +1,5 @@
 import "./App.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Catalog from "./pages/Catalog";
 import Homepage from "./pages/Homepage";
@@ -12,7 +12,8 @@ import { HeaderStyle, LinkStyle, SpanContainer } from "./styles";
 import { AuthContext } from "./store/AuthContext";
 
 function App() {
-  const { isModal } = useContext(AuthContext);
+  const { isModal, create } = useContext(AuthContext);
+  useEffect(() => {}, [create]);
 
   return (
     <>

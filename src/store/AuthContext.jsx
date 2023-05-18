@@ -75,7 +75,7 @@ function AuthProvider({ children }) {
     getUsers();
     getCategories();
     getProducts();
-  }, [isLog, lastUser]);
+  }, [isLog, lastUser, create]);
 
   return (
     <AuthContext.Provider

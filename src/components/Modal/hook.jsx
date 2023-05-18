@@ -15,8 +15,13 @@ function useModalHook() {
     useContext(AuthContext);
   const [category, setCategory] = useState("");
 
+  const openAlert = (type) => {
+    alert(`${type === "PRODUCT" ? "Produit" : "Promotion"} ajouté avec succès`);
+    setIsModal({ isOpen: false });
+    setCreate(!create);
+  };
+
   const onSubmit = async (data) => {
-    console.log("data", data);
     try {
       if (isModal.type === "PRODUCT") {
         await axios.post(
@@ -30,6 +35,7 @@ function useModalHook() {
           data
         );
       }
+      openAlert(isModal.type);
     } catch (error) {
       alert("Erreur à l'ajout du produit", error);
     }
