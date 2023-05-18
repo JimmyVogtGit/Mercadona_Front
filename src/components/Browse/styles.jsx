@@ -26,7 +26,7 @@ export const ListContainer = styled.ul`
 export const SwitchContainer = styled.div`
   position: fixed;
   top: 150px;
-  right: 20px;
+  right: 10px;
   display: flex;
   align-items: center;
   font-weight: bolder;
