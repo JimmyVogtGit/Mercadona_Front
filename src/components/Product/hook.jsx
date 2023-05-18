@@ -1,11 +1,12 @@
 import { AuthContext } from "../../store/AuthContext";
-import { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
 
 function useProductHook() {
-  const { postProduct } = useContext(AuthContext);
-  const [isPromoModal, setIsPromoModal] = useState(false);
+  const { postProduct, create, setIsModal } = useContext(AuthContext);
 
-  return { postProduct, isPromoModal, setIsPromoModal };
+  useEffect(() => {}, [create]);
+
+  return { postProduct, setIsModal };
 }
 
 export default useProductHook;

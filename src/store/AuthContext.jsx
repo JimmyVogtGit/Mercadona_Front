@@ -12,6 +12,15 @@ function AuthProvider({ children }) {
   const [categoryList, setCategoryList] = useState([]);
   const [productList, setProductList] = useState([]);
   const [lastUser, setLastUser] = useState("");
+  const [create, setCreate] = useState(false);
+  const [isModal, setIsModal] = useState({
+    isOpen: false,
+    type: "",
+    id: null,
+    wording: "",
+  });
+
+  const [data, setData] = useState([]);
   const deleteStorage = () => {
     localStorage.removeItem("isConnect");
     localStorage.removeItem("userName");
@@ -53,7 +62,7 @@ function AuthProvider({ children }) {
 
   const postProduct = async (data) => {
     try {
-      const reponse = await axios.post(
+      await axios.post(
         `${import.meta.env.VITE_DEPLOY_ENDPOINT}/post-product/`,
         data
       );
@@ -68,7 +77,7 @@ function AuthProvider({ children }) {
     getUsers();
     getCategories();
     getProducts();
-  }, [isLog, lastUser]);
+  }, [isLog, lastUser, create]);
 
   return (
     <AuthContext.Provider
@@ -84,6 +93,10 @@ function AuthProvider({ children }) {
         setCategoryList,
         productList,
         postProduct,
+        create,
+        setCreate,
+        isModal,
+        setIsModal,
       }}
     >
       {children}

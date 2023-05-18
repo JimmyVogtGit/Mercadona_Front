@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../store/AuthContext";
 
-function useModalHook(type) {
+function useModalHook() {
   const {
     register,
     handleSubmit,
@@ -11,30 +11,54 @@ function useModalHook(type) {
     formState: { errors },
   } = useForm();
 
-  const { categoryList } = useContext(AuthContext);
+  const { categoryList, setCreate, create, setIsModal, isModal } =
+    useContext(AuthContext);
+  const [category, setCategory] = useState("");
+
+  const openAlert = (type) => {
+    alert(`${type === "PRODUCT" ? "Produit" : "Promotion"} ajouté avec succès`);
+    setIsModal({ isOpen: false });
+    setCreate(!create);
+  };
 
   const onSubmit = async (data) => {
     try {
-      if (type === "PRODUCT") {
-        const response = await axios.post(
+      if (isModal.type === "PRODUCT") {
+        await axios.post(
           `${import.meta.env.VITE_DEPLOY_ENDPOINT}/create-product/`,
           data
         );
-        alert("Produit ajouté avec succès", response);
       }
-      if (type === "PROMO") {
-        const response = await axios.post(
+      if (isModal.type === "PROMO") {
+        await axios.post(
           `${import.meta.env.VITE_DEPLOY_ENDPOINT}/create-promotion/`,
           data
         );
-        alert("Promotion ajoutée avec succès", response);
       }
+      openAlert(isModal.type);
     } catch (error) {
       alert("Erreur à l'ajout du produit", error);
     }
   };
 
-  return { register, handleSubmit, reset, errors, onSubmit, categoryList };
+  const handleChange = (event) => {
+    setCategory(event.target.value);
+  };
+
+  return {
+    register,
+    handleSubmit,
+    reset,
+    errors,
+    onSubmit,
+    categoryList,
+    category,
+    setCategory,
+    handleChange,
+    setCreate,
+    setIsModal,
+    isModal,
+  };
 }
 
 export default useModalHook;
