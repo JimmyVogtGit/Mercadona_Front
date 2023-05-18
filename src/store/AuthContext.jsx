@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import theme from "./theme_site";
 
 export const AuthContext = createContext();
 const token = localStorage.getItem("jwt");
@@ -19,8 +20,8 @@ function AuthProvider({ children }) {
     id: null,
     wording: "",
   });
+  const [language, setLanguage] = useState("fr");
 
-  const [data, setData] = useState([]);
   const deleteStorage = () => {
     localStorage.removeItem("isConnect");
     localStorage.removeItem("userName");
@@ -97,6 +98,9 @@ function AuthProvider({ children }) {
         setCreate,
         isModal,
         setIsModal,
+        language,
+        setLanguage,
+        theme,
       }}
     >
       {children}

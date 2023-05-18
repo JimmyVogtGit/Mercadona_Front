@@ -8,10 +8,11 @@ import {
 } from "./styles";
 
 function Catalog() {
-  const { isLog, categoryList, filterCat, filteredCat } = hook();
+  const { isLog, categoryList, filterCat, filteredCat, language, theme } =
+    hook();
   return (
     <Container>
-      <h1>Catalogue Mercadona</h1>
+      <h1>{theme.themeText[language].catalog}</h1>
       <CatalogContainer>
         <AsideContainer>
           <ul>
@@ -26,7 +27,7 @@ function Catalog() {
         </AsideContainer>
         <ListCatalogContainer>
           {filteredCat.length === 0 ? (
-            <p>Aucun produit trouvé</p>
+            <p>{theme.themeText[language].noProduct}</p>
           ) : (
             filteredCat.map((product, index) => {
               return (

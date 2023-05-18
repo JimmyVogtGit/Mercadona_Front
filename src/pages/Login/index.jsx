@@ -24,6 +24,8 @@ function login() {
     showPassword,
     setShowPassword,
     setIsModal,
+    language,
+    theme,
   } = hook();
 
   return (
@@ -66,13 +68,15 @@ function login() {
         </FormContainer>
       ) : (
         <LoginContainer>
-          <h1>Bienvenue {username}</h1>
+          <h1>
+            {theme.themeText[language].welcomeAdmin} {username}
+          </h1>
           <Button
             variant="contained"
             color="success"
             onClick={() => setIsModal({ isOpen: true, type: "PRODUCT" })}
           >
-            Creer un produit
+            {theme.themeButton[language].createProduct}
           </Button>
           <ProductContainer>
             {productList.map((product, index) => {

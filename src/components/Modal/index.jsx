@@ -27,6 +27,8 @@ function modal() {
     category,
     setIsModal,
     isModal,
+    language,
+    theme,
   } = hook();
 
   return (
@@ -35,28 +37,28 @@ function modal() {
       <ModalContainer>
         {isModal.type === "PRODUCT" && (
           <>
-            <h1>{"Creation d'un produit"}</h1>
+            <h1>{theme.themeForm[language].createProductTitle}</h1>
             <FormContainer onSubmit={handleSubmit(onSubmit)}>
               <TextField
-                label="Libellé"
+                label={theme.themeForm[language].wording}
                 {...register("wording", { required: true })}
                 error={errors.wording}
               />
               <TextField
-                label="Description"
+                label={theme.themeForm[language].describe}
                 {...register("describe", { required: true })}
                 error={errors.describe}
               />
               <TextField
-                label="Prix"
+                label={theme.themeForm[language].price}
                 {...register("price", { required: true })}
                 error={errors.price}
               />
               <FormControl>
-                <InputLabel>Category</InputLabel>
+                <InputLabel>{theme.themeForm[language].category}</InputLabel>
                 <Select
                   value={category}
-                  label="Category"
+                  label={theme.themeForm[language].category}
                   {...register("category", { required: true })}
                   error={errors.category}
                   onChange={handleChange}
@@ -70,14 +72,14 @@ function modal() {
               </FormControl>
 
               <Button variant="contained" type="submit" disabled={false}>
-                Creer produit
+                {theme.themeButton[language].createProduct}
               </Button>
             </FormContainer>
           </>
         )}
         {isModal.type === "PROMO" && (
           <>
-            <h1>{"Creation d'une promotion"}</h1>
+            <h1>{theme.themeForm[language].createPromoTitle}</h1>
             <FormContainer onSubmit={handleSubmit(onSubmit)}>
               <label htmlFor="productId">{isModal.wording}</label>
               <input
@@ -86,12 +88,12 @@ function modal() {
                 {...register("productId", { required: true })}
               />
               <TextField
-                label="Pourcentage"
+                label={theme.themeForm[language].percentage}
                 {...register("percent", { required: true })}
                 error={errors.percent}
               />
               <TextField
-                label="startDate"
+                label={theme.themeForm[language].startDate}
                 type="date"
                 InputProps={{
                   startAdornment: <InputAdornment position="start" />,
@@ -100,7 +102,7 @@ function modal() {
                 error={errors.startDate}
               />
               <TextField
-                label="endDate"
+                label={theme.themeForm[language].endDate}
                 type="date"
                 InputProps={{
                   startAdornment: <InputAdornment position="start" />,
@@ -109,7 +111,7 @@ function modal() {
                 error={errors.endDate}
               />
               <Button variant="contained" type="submit" disabled={false}>
-                Creer promotion
+                {theme.themeButton[language].createPromo}
               </Button>
             </FormContainer>
           </>

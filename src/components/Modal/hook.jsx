@@ -11,8 +11,15 @@ function useModalHook() {
     formState: { errors },
   } = useForm();
 
-  const { categoryList, setCreate, create, setIsModal, isModal } =
-    useContext(AuthContext);
+  const {
+    categoryList,
+    setCreate,
+    create,
+    setIsModal,
+    isModal,
+    language,
+    theme,
+  } = useContext(AuthContext);
   const [category, setCategory] = useState("");
 
   const openAlert = (type) => {
@@ -58,6 +65,8 @@ function useModalHook() {
     setCreate,
     setIsModal,
     isModal,
+    language,
+    theme,
   };
 }
 
