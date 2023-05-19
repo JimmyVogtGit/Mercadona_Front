@@ -30,11 +30,13 @@ export const SpanContainer = styled.span`
 `;
 
 export const FooterContainer = styled.footer`
+  position: fixed;
+  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   flex-direction: column;
-  height: 150px;
+  height: 130px;
   width: 100%;
   background-color: #275c80;
 
