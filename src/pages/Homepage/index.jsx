@@ -3,7 +3,6 @@ import hook from "./hook";
 
 function Homepage() {
   const { language, theme } = hook();
-  console.log("themeText", theme.themeText[language].welcome);
   return (
     <HomepageContainer>
       <h1>{theme.themeText[language].welcome}</h1>

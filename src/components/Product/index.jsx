@@ -1,17 +1,21 @@
 import PropTypes from "prop-types";
-import { ProductContainer, PromoContainer, DescribeContainer } from "./styles";
-import img from "../../assets/img/beauTemps.jpg";
+import {
+  ProductContainer,
+  PromoContainer,
+  DescribeContainer,
+  ImageContainer,
+} from "./styles";
 import hook from "./hook";
 
 import { Button } from "@mui/material";
 
-function Product({ isLog, wording, describe, price, promotion, id }) {
-  const { setIsModal, language, theme } = hook();
+function Product({ isLog, wording, describe, price, promotion, id, category }) {
+  const { setIsModal, language, theme, imgSelected } = hook(category);
 
   return (
     <>
       <ProductContainer>
-        <img src={img} alt="img-product" />
+        <ImageContainer src={imgSelected} />
         <h2>{wording}</h2>
         <DescribeContainer>{describe}</DescribeContainer>
         {promotion.length === 0 || promotion[0].percentage === 0 ? (

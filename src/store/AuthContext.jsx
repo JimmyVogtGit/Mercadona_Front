@@ -21,6 +21,7 @@ function AuthProvider({ children }) {
     wording: "",
   });
   const [language, setLanguage] = useState("fr");
+  const [clickLink, setClickLink] = useState({});
 
   const deleteStorage = () => {
     localStorage.removeItem("isConnect");
@@ -101,6 +102,8 @@ function AuthProvider({ children }) {
         language,
         setLanguage,
         theme,
+        clickLink,
+        setClickLink,
       }}
     >
       {children}
