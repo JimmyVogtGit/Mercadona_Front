@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import theme from "./theme_site";
 
 export const AuthContext = createContext();
 const token = localStorage.getItem("jwt");
@@ -12,6 +13,16 @@ function AuthProvider({ children }) {
   const [categoryList, setCategoryList] = useState([]);
   const [productList, setProductList] = useState([]);
   const [lastUser, setLastUser] = useState("");
+  const [create, setCreate] = useState(false);
+  const [isModal, setIsModal] = useState({
+    isOpen: false,
+    type: "",
+    id: null,
+    wording: "",
+  });
+  const [language, setLanguage] = useState("fr");
+  const [clickLink, setClickLink] = useState({});
+
   const deleteStorage = () => {
     localStorage.removeItem("isConnect");
     localStorage.removeItem("userName");
@@ -53,7 +64,7 @@ function AuthProvider({ children }) {
 
   const postProduct = async (data) => {
     try {
-      const reponse = await axios.post(
+      await axios.post(
         `${import.meta.env.VITE_DEPLOY_ENDPOINT}/post-product/`,
         data
       );
@@ -68,7 +79,7 @@ function AuthProvider({ children }) {
     getUsers();
     getCategories();
     getProducts();
-  }, [isLog, lastUser]);
+  }, [isLog, lastUser, create]);
 
   return (
     <AuthContext.Provider
@@ -84,6 +95,15 @@ function AuthProvider({ children }) {
         setCategoryList,
         productList,
         postProduct,
+        create,
+        setCreate,
+        isModal,
+        setIsModal,
+        language,
+        setLanguage,
+        theme,
+        clickLink,
+        setClickLink,
       }}
     >
       {children}

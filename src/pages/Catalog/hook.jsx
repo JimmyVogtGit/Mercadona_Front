@@ -2,7 +2,8 @@ import { AuthContext } from "../../store/AuthContext";
 import { useContext, useState, useEffect } from "react";
 
 function useCatalogHook() {
-  const { isLog, productList, categoryList } = useContext(AuthContext);
+  const { isLog, productList, categoryList, language, theme, setClickLink } =
+    useContext(AuthContext);
   const [filteredCat, setFilteredCat] = useState([]);
 
   useEffect(() => {
@@ -10,12 +11,23 @@ function useCatalogHook() {
   }, [categoryList]);
 
   const filterCat = (filterName) => {
-    const test = productList.filter((cat) => cat.category === filterName);
+    const filteredCat = productList.filter(
+      (cat) => cat.category === filterName
+    );
 
-    setFilteredCat(test);
+    setFilteredCat(filteredCat);
+    setClickLink(filteredCat);
   };
 
-  return { isLog, productList, categoryList, filteredCat, filterCat };
+  return {
+    isLog,
+    productList,
+    categoryList,
+    filteredCat,
+    filterCat,
+    language,
+    theme,
+  };
 }
 
 export default useCatalogHook;

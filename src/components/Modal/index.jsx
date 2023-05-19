@@ -1,76 +1,128 @@
 import hook from "./hook";
 import {
+  TextField,
+  Button,
+  Select,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  InputAdornment,
+} from "@mui/material";
+
+import {
   ModalOverlay,
   ModalContainer,
   FormContainer,
-  CloseModal,
+  Container,
 } from "./styles";
 
-function modal({ setModalIsOpen, setIsPromoModal, type, id, wording }) {
-  const { register, handleSubmit, reset, errors, onSubmit, categoryList } =
-    hook(type);
+function modal() {
+  const {
+    register,
+    handleSubmit,
+    errors,
+    onSubmit,
+    categoryList,
+    handleChange,
+    category,
+    setIsModal,
+    isModal,
+    language,
+    theme,
+  } = hook();
 
   return (
-    <ModalOverlay>
+    <Container>
+      <ModalOverlay onClick={() => setIsModal({ isOpen: false })} />
       <ModalContainer>
-        <CloseModal
-          onClick={() =>
-            type === "PRODUCT" ? setModalIsOpen(false) : setIsPromoModal(false)
-          }
-        ></CloseModal>
-        {type === "PRODUCT" && (
+        {isModal.type === "PRODUCT" && (
           <>
-            <h1>{"Creation d'un produit"}</h1>
+            <h1>{theme.themeForm[language].createProductTitle}</h1>
             <FormContainer onSubmit={handleSubmit(onSubmit)}>
-              <label htmlFor="wording">Libellé</label>
-              <input {...register("wording", { required: true })} />
-              <label htmlFor="describe">Description</label>
-              <input {...register("describe", { required: true })} />
-              <label htmlFor="price">Prix</label>
-              <input
-                type="number"
-                min="0"
-                max="100"
-                {...register("price", { required: true })}
+              <TextField
+                label={theme.themeForm[language].wording}
+                {...register("wording", { required: true })}
+                error={errors.wording}
               />
-              <label htmlFor="category">Category</label>
-              <select {...register("category", { required: true })}>
-                {categoryList.map((cat) => (
-                  <option key={cat.id} value={cat.id}>
-                    {cat.name}
-                  </option>
-                ))}
-              </select>
+              <TextField
+                label={theme.themeForm[language].describe}
+                {...register("describe", { required: true })}
+                error={errors.describe}
+              />
+              <TextField
+                label={theme.themeForm[language].price}
+                {...register("price", { required: true })}
+                error={errors.price}
+              />
+              <FormControl>
+                <InputLabel>{theme.themeForm[language].category}</InputLabel>
+                <Select
+                  value={category}
+                  label={theme.themeForm[language].category}
+                  {...register("category", { required: true })}
+                  error={errors.category}
+                  onChange={handleChange}
+                >
+                  {categoryList.map((cat, index) => (
+                    <MenuItem key={index} value={cat.id}>
+                      {cat.name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
 
-              {/* <label htmlFor="image">Ajouter une image :</label>
-          <input type="file" {...register("image", { required: true })} /> */}
-
-              <input type="submit" disabled={false} />
+              <Button variant="contained" type="submit" disabled={false}>
+                {theme.themeButton[language].createProduct}
+              </Button>
             </FormContainer>
           </>
         )}
-        {type === "PROMO" && (
+        {isModal.type === "PROMO" && (
           <>
-            <h1>{"Creation d'une promotion"}</h1>
+            <h1>{theme.themeForm[language].createPromoTitle}</h1>
             <FormContainer onSubmit={handleSubmit(onSubmit)}>
-              <label htmlFor="productId">{wording}</label>
+              <label htmlFor="productId">{isModal.wording}</label>
               <input
-                value={id}
+                value={isModal.id}
                 type="hidden"
                 {...register("productId", { required: true })}
               />
-              <label htmlFor="percent">Pourcentage</label>
-              <input {...register("percent", { required: true })} />
-              <label htmlFor="startDate">Date de debut</label>
-              <input {...register("startDate", { required: true })} />
-              <label htmlFor="endDate">Date de fin</label>
-              <input {...register("endDate", { required: true })} />
-              <input type="submit" disabled={false} />
+              <TextField
+                label={theme.themeForm[language].percentage}
+                type="number"
+                inputProps={{
+                  min: 0,
+                  max: 100,
+                }}
+                {...register("percent", { required: true })}
+                error={errors.percent}
+              />
+              <TextField
+                label={theme.themeForm[language].startDate}
+                type="date"
+                InputProps={{
+                  startAdornment: <InputAdornment position="start" />,
+                }}
+                {...register("startDate", { required: true })}
+                error={errors.startDate}
+              />
+              <TextField
+                label={theme.themeForm[language].endDate}
+                type="date"
+                InputProps={{
+                  startAdornment: <InputAdornment position="start" />,
+                }}
+                {...register("endDate", { required: true })}
+                error={errors.endDate}
+              />
+              <Button variant="contained" type="submit" disabled={false}>
+                {theme.themeButton[language].createPromo}
+              </Button>
             </FormContainer>
           </>
         )}
       </ModalContainer>
-    </ModalOverlay>
+    </Container>
   );
 }
 

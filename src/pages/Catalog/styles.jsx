@@ -10,6 +10,7 @@ export const Container = styled.div`
 export const CatalogContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 80%;
 
   @media only screen and (max-width: 600px) {
@@ -17,29 +18,20 @@ export const CatalogContainer = styled.div`
   }
 `;
 
-export const ListCatalogContainer = styled.div`
-  height: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap;
-
-  @media only screen and (max-width: 600px) {
-    flex-direction: column;
-  }
-`;
-
 export const AsideContainer = styled.aside`
+  background-color: rgb(224, 39, 39);
+  height: auto;
+  width: auto;
+  position: fixed;
+  top: 250px;
+  left: 20px;
+  border-radius: 10px;
+
   ul {
     display: flex;
     flex-direction: column;
-    position: fixed;
-    top: 100px;
-    left: 20px;
     justify-content: center;
     list-style-type: none;
-    border-radius: 10px;
-    background-color: rgb(224, 39, 39);
     color: white;
     height: auto;
     padding: 0;
@@ -55,10 +47,33 @@ export const AsideContainer = styled.aside`
   }
 
   @media only screen and (max-width: 600px) {
+    position: static;
+    background-color: rgb(224, 39, 39);
+    width: 80%;
+    align-items: center;
+    height: 70px;
+    overflow-x: auto;
+    white-space: nowrap;
     ul {
+      width: auto;
+      height: 100%;
       flex-direction: row;
-      position: static;
+      color: white;
+      justify-content: flex-start;
+      align-items: center;
+      margin: 0 5px 0 5px;
     }
-    width: 100%;
+  }
+`;
+
+export const ListCatalogContainer = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
   }
 `;

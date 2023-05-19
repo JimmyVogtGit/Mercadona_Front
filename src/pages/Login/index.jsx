@@ -1,5 +1,4 @@
 import hook from "./hook";
-import Modal from "../../components/Modal";
 import Product from "../../components/Product";
 import {
   TextField,
@@ -20,40 +19,40 @@ function login() {
     errors,
     onSubmit,
     isLog,
-    modalIsOpen,
-    setModalIsOpen,
     username,
     productList,
     showPassword,
     setShowPassword,
+    setIsModal,
+    language,
+    theme,
   } = hook();
 
   return (
     <>
       {!isLog ? (
         <FormContainer>
+          <h1>{theme.themeForm[language].connection}</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
-              id="test"
-              label="Nom d'utilisateur"
+              label={theme.themeForm[language].userName}
               {...register("username", { required: true })}
               error={errors.username}
             />
-            <FormControl variant="outlined" id="test">
+            <FormControl variant="outlined">
               <InputLabel htmlFor="outlined-adornment-password">
-                Mot de Passe
+                {theme.themeForm[language].password}
               </InputLabel>
               <OutlinedInput
                 id="outlined-adornment-password"
                 type={showPassword ? "text" : "password"}
                 {...register("password", { required: true })}
-                error={errors.username}
+                error={errors.password}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
                       aria-label="toggle password visibility"
                       onClick={() => setShowPassword(!showPassword)}
-                      // onMouseDown={handleMouseDownPassword}
                       edge="end"
                     >
                       {showPassword ? <VisibilityOff /> : <Visibility />}
@@ -63,23 +62,23 @@ function login() {
                 label="Password"
               />
             </FormControl>
-            <Button
-              id="test"
-              variant="contained"
-              type="submit"
-              disabled={false}
-            >
-              Soumettre
+            <Button variant="contained" type="submit" disabled={false}>
+              {theme.themeForm[language].submit}
             </Button>
           </form>
         </FormContainer>
       ) : (
         <LoginContainer>
-          <h1>Bienvenue {username}</h1>
-          <button onClick={() => setModalIsOpen(true)}>Creer un produit</button>
-          {modalIsOpen && (
-            <Modal type="PRODUCT" setModalIsOpen={setModalIsOpen} />
-          )}
+          <h1>
+            {theme.themeText[language].welcomeAdmin} {username}
+          </h1>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={() => setIsModal({ isOpen: true, type: "PRODUCT" })}
+          >
+            {theme.themeButton[language].createProduct}
+          </Button>
           <ProductContainer>
             {productList.map((product, index) => {
               return (
@@ -91,6 +90,7 @@ function login() {
                   price={product.price}
                   isLog={isLog}
                   promotion={product.promotion}
+                  category={product.category}
                 />
               );
             })}

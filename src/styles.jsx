@@ -28,3 +28,43 @@ export const SpanContainer = styled.span`
   font-size: 0.5em;
   color: #275c80;
 `;
+
+export const FooterContainer = styled.footer`
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  height: 150px;
+  width: 100%;
+  background-color: #275c80;
+
+  * {
+    margin-right: 20px;
+    color: white;
+  }
+
+  h3 {
+    font-family: "jua";
+    color: #ffffff;
+  }
+
+  span {
+    margin: 0;
+    font-size: 0.8em;
+    color: #e02727;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  @media only screen and (max-width: 600px) {
+    align-items: center;
+    * {
+      margin: 0;
+    }
+    p {
+      margin-top: 10px;
+    }
+  }
+`;
