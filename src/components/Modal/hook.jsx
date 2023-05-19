@@ -23,7 +23,13 @@ function useModalHook() {
   const [category, setCategory] = useState("");
 
   const openAlert = (type) => {
-    alert(`${type === "PRODUCT" ? "Produit" : "Promotion"} ajouté avec succès`);
+    alert(
+      `${
+        type === "PRODUCT"
+          ? `${theme.themeText[language].product}`
+          : `${theme.themeText[language].product}`
+      } ${theme.themeText[language].addSuccess}`
+    );
     setIsModal({ isOpen: false });
     setCreate(!create);
   };
@@ -44,7 +50,7 @@ function useModalHook() {
       }
       openAlert(isModal.type);
     } catch (error) {
-      alert("Erreur à l'ajout du produit", error);
+      alert(`${theme.themeText[language].addFailure}`, error);
     }
   };
 

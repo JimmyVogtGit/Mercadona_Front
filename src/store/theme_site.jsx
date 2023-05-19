@@ -126,6 +126,10 @@ const themeImg = [
 
 const themeText = {
   fr: {
+    addFailure: "Erreur lors de l'ajout",
+    addSuccess: "ajouté avec succès",
+    promo: "Promotion",
+    product: "Produit",
     nothing: "Accès interdit !!",
     isPromo: "En promotion",
     noProduct: "Aucun produit trouvé",
@@ -140,6 +144,10 @@ const themeText = {
       "Découvrez la magie des gadgets dans notre vente exceptionnelle ! Êtes-vous prêt à plonger dans un monde rempli de technologie innovante et de gadgets futuristes ? Ne cherchez plus, car notre événement de vente de gadgets est là pour vous éblouir. ",
   },
   es: {
+    addFailure: "Error al añadir",
+    addSuccess: "añadido con éxito",
+    promo: "Promoción",
+    product: "Producto",
     nothing: "¡No hay acceso!",
     isPromo: "En promoción",
     noProduct: "No se han encontrado productos",
