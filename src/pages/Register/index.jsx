@@ -1,41 +1,86 @@
 import hook from "./hook";
+import { FormContainer } from "./styles";
+import {
+  TextField,
+  Button,
+  OutlinedInput,
+  InputAdornment,
+  IconButton,
+  FormControl,
+  InputLabel,
+} from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 function register() {
-  const { register, handleSubmit, errors, onSubmit, userList, isLog } = hook();
+  const {
+    register,
+    handleSubmit,
+    errors,
+    onSubmit,
+    userList,
+    isLog,
+    showPassword,
+    setShowPassword,
+    language,
+    theme,
+  } = hook();
 
   return (
     <div>
       {isLog ? (
-        <>
+        <FormContainer>
+          <h1>{theme.themeForm[language].registerWelcome}</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <label htmlFor="name">Nom d&apos;utilisateur</label>
-            <input {...register("name", { required: true })} />
-            {errors.name && <span>Le champ nom utilisateur est requis</span>}
-            <label htmlFor="email">Email :</label>
-            <input
-              id="email"
-              {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
+            <TextField
+              label={theme.themeForm[language].userName}
+              {...register("username", { required: true })}
+              error={errors.username}
             />
-            {errors.email && (
-              <span>
-                Le champ email est requis et doit être une adresse email valide
-              </span>
-            )}
-            <label htmlFor="password">Password :</label>
-            <input {...register("password", { required: true })} />
-            {errors.password && <span>Le champ password est requis</span>}
-            <input type="submit" disabled={false} />
+            <TextField
+              label={theme.themeForm[language].email}
+              type="email"
+              {...register("email", { required: true })}
+              error={errors.email}
+            />
+            <FormControl variant="outlined">
+              <InputLabel htmlFor="outlined-adornment-password">
+                {theme.themeForm[language].password}
+              </InputLabel>
+              <OutlinedInput
+                id="outlined-adornment-password"
+                type={showPassword ? "text" : "password"}
+                {...register("password", { required: true })}
+                error={errors.password}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={() => setShowPassword(!showPassword)}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                label="Password"
+              />
+            </FormControl>
+            <Button variant="contained" type="submit" disabled={false}>
+              {theme.themeForm[language].submit}
+            </Button>
           </form>
           <ul>
             {userList.map((user, index) => (
-              <li
-                key={index}
-              >{`utilisateur : ${user.name}. adresse mail : ${user.email}`}</li>
+              <li key={index}>
+                {theme.themeForm[language].userName} : {user.name}.{" "}
+                {theme.themeForm[language].email}: {user.email}
+              </li>
             ))}
           </ul>
-        </>
+        </FormContainer>
       ) : (
-        <h1>{"Circuler il n'y a rien à voir ici !!!"}</h1>
+        <h1>{theme.themeText[language].nothing}</h1>
       )}
     </div>
   );

@@ -15,7 +15,9 @@ function useFormHandler(defaultValues = {}) {
   });
 
   const [backResponse, setBackResponse] = useState({});
-  const { isLog, userList, setLastUser } = useContext(AuthContext);
+  const { isLog, userList, setLastUser, language, theme } =
+    useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     Object.keys(backResponse).length !== 0 &&
@@ -48,7 +50,19 @@ function useFormHandler(defaultValues = {}) {
     }
   };
 
-  return { register, handleSubmit, reset, errors, onSubmit, userList, isLog };
+  return {
+    register,
+    handleSubmit,
+    reset,
+    errors,
+    onSubmit,
+    userList,
+    isLog,
+    language,
+    theme,
+    showPassword,
+    setShowPassword,
+  };
 }
 
 export default useFormHandler;

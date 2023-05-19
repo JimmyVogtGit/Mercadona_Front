@@ -96,6 +96,7 @@ const themeImg = [
 
 const themeText = {
   fr: {
+    nothing: "Accès interdit !!",
     isPromo: "En promotion",
     noProduct: "Aucun produit trouvé",
     welcomeAdmin: "Bienvenue",
@@ -109,6 +110,7 @@ const themeText = {
       "Découvrez la magie des gadgets dans notre vente exceptionnelle ! Êtes-vous prêt à plonger dans un monde rempli de technologie innovante et de gadgets futuristes ? Ne cherchez plus, car notre événement de vente de gadgets est là pour vous éblouir. ",
   },
   es: {
+    nothing: "¡No hay acceso!",
     isPromo: "En promoción",
     noProduct: "No se han encontrado productos",
     welcomeAdmin: "Bienvenido",
@@ -153,6 +155,14 @@ const themeForm = {
     describe: "Description",
     price: "Prix",
     category: "Catégory",
+    password: "Mot de passe",
+    userName: "Nom d'utilisateur",
+    submit: "soumettre",
+    connection: "Merci de vous connecter",
+    email: "Email",
+    user: "Utilisateur",
+    registerWelcome: "Enregistrer des utilisateurs",
+    registerList: "Liste des utilisateurs inscrits",
   },
   es: {
     startDate: "Fecha de inicio",
@@ -164,6 +174,14 @@ const themeForm = {
     describe: "Descripción",
     price: "Premios",
     category: "Categoría",
+    userName: "Nombre de usuario",
+    password: "Contraseña",
+    submit: "enviar",
+    connection: "Conéctese",
+    email: "correo electrónico",
+    user: "Usuario",
+    registerWelcome: "Registrar usuarios aquí",
+    registerList: "Lista de usuarios registrados",
   },
 };
 

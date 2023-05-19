@@ -32,21 +32,22 @@ function login() {
     <>
       {!isLog ? (
         <FormContainer>
+          <h1>{theme.themeForm[language].connection}</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
-              label="Nom d'utilisateur"
+              label={theme.themeForm[language].userName}
               {...register("username", { required: true })}
               error={errors.username}
             />
             <FormControl variant="outlined">
               <InputLabel htmlFor="outlined-adornment-password">
-                Mot de Passe
+                {theme.themeForm[language].password}
               </InputLabel>
               <OutlinedInput
                 id="outlined-adornment-password"
                 type={showPassword ? "text" : "password"}
                 {...register("password", { required: true })}
-                error={errors.username}
+                error={errors.password}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
@@ -62,7 +63,7 @@ function login() {
               />
             </FormControl>
             <Button variant="contained" type="submit" disabled={false}>
-              Soumettre
+              {theme.themeForm[language].submit}
             </Button>
           </form>
         </FormContainer>
