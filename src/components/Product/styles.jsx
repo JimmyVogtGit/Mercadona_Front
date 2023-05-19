@@ -12,15 +12,20 @@ export const ProductContainer = styled.div`
   margin: 20px;
   background-color: white;
   overflow: hidden;
-  img {
-    height: 200px;
-    width: 100%;
-    border-radius: 10px 10px 0 0;
-  }
+
   :hover {
     -webkit-box-shadow: 5px 5px 20px -14px #000000;
     box-shadow: 5px 5px 20px -14px #000000;
   }
+`;
+
+export const ImageContainer = styled.div`
+  height: 250px;
+  width: 100%;
+  background-image: url(${(props) => props.src});
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
 `;
 
 export const DescribeContainer = styled.p`

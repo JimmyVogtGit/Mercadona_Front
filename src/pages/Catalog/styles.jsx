@@ -10,6 +10,7 @@ export const Container = styled.div`
 export const CatalogContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 80%;
 
   @media only screen and (max-width: 600px) {
@@ -22,7 +23,7 @@ export const AsideContainer = styled.aside`
   height: auto;
   width: auto;
   position: fixed;
-  top: 100px;
+  top: 250px;
   left: 20px;
   border-radius: 10px;
 

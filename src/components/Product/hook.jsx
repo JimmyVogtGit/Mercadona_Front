@@ -1,13 +1,21 @@
 import { AuthContext } from "../../store/AuthContext";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 
-function useProductHook() {
-  const { postProduct, create, setIsModal, language, theme } =
+function useProductHook(category) {
+  const { postProduct, create, setIsModal, language, theme, clickLink } =
     useContext(AuthContext);
 
-  useEffect(() => {}, [create]);
+  const [imgSelected, setImgSelected] = useState("");
 
-  return { postProduct, setIsModal, language, theme };
+  useEffect(() => {
+    const catFiltered = theme.themeImg.filter(
+      (cat) => cat.catName === category
+    );
+    const randomNumber = Math.floor(Math.random() * (catFiltered.length - 1));
+    setImgSelected(catFiltered[randomNumber].url);
+  }, [create, clickLink]);
+
+  return { postProduct, setIsModal, language, theme, imgSelected };
 }
 
 export default useProductHook;

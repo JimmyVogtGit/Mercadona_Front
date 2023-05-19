@@ -39,6 +39,7 @@ function Catalog() {
                   price={product.price}
                   promotion={product.promotion}
                   isLog={isLog}
+                  category={product.category}
                 />
               );
             })
