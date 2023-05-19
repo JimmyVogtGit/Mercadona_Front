@@ -13,18 +13,18 @@ function Catalog() {
   return (
     <Container>
       <h1>{theme.themeText[language].catalog}</h1>
+      <AsideContainer>
+        <ul>
+          {categoryList.map((cat) => {
+            return (
+              <li onClick={() => filterCat(cat.name)} key={cat.id}>
+                {cat.name}
+              </li>
+            );
+          })}
+        </ul>
+      </AsideContainer>
       <CatalogContainer>
-        <AsideContainer>
-          <ul>
-            {categoryList.map((cat) => {
-              return (
-                <li onClick={() => filterCat(cat.name)} key={cat.id}>
-                  {cat.name}
-                </li>
-              );
-            })}
-          </ul>
-        </AsideContainer>
         <ListCatalogContainer>
           {filteredCat.length === 0 ? (
             <p>{theme.themeText[language].noProduct}</p>
