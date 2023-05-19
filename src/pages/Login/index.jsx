@@ -90,6 +90,7 @@ function login() {
                   price={product.price}
                   isLog={isLog}
                   promotion={product.promotion}
+                  category={product.category}
                 />
               );
             })}

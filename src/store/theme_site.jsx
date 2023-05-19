@@ -53,8 +53,8 @@ const themeImg = [
   {
     id: 12,
     catName: "Mode femme",
-    name: "woman2",
-    url: "src/assets/img/woman/woman2.jpg",
+    name: "woman1",
+    url: "src/assets/img/woman/woman1.jpg",
   },
   {
     id: 13,
@@ -126,6 +126,9 @@ const themeImg = [
 
 const themeText = {
   fr: {
+    legacy: "Mentions légales",
+    contact: "Contact",
+    policy: "Politique de confidentialité",
     addFailure: "Erreur lors de l'ajout",
     addSuccess: "ajouté avec succès",
     promo: "Promotion",
@@ -144,6 +147,9 @@ const themeText = {
       "Découvrez la magie des gadgets dans notre vente exceptionnelle ! Êtes-vous prêt à plonger dans un monde rempli de technologie innovante et de gadgets futuristes ? Ne cherchez plus, car notre événement de vente de gadgets est là pour vous éblouir. ",
   },
   es: {
+    legacy: "Información jurídica",
+    contact: "contacto",
+    policy: "política de confidencialidad",
     addFailure: "Error al añadir",
     addSuccess: "añadido con éxito",
     promo: "Promoción",

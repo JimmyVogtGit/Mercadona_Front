@@ -89,6 +89,11 @@ function modal() {
               />
               <TextField
                 label={theme.themeForm[language].percentage}
+                type="number"
+                inputProps={{
+                  min: 0,
+                  max: 100,
+                }}
                 {...register("percent", { required: true })}
                 error={errors.percent}
               />
