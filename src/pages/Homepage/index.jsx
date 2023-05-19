@@ -3,7 +3,6 @@ import hook from "./hook";
 
 function Homepage() {
   const { language, theme, retail, gadget } = hook();
-  console.log("retail.url", retail);
   return (
     <>
       <HomepageContainer>
