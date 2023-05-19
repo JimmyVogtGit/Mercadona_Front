@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+
   @media only screen and (max-width: 600px) {
   }
 `;

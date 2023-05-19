@@ -30,6 +30,11 @@ export const SectionContainer = styled.div`
     text-align: justify;
   }
 
+  img {
+    height: 100px;
+    width: 200px;
+  }
+
   @media only screen and (max-width: 600px) {
     p {
       width: 100%;

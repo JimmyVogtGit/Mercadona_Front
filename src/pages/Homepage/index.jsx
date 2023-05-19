@@ -3,6 +3,7 @@ import hook from "./hook";
 
 function Homepage() {
   const { language, theme, retail, gadget } = hook();
+
   return (
     <>
       <HomepageContainer>
@@ -16,6 +17,7 @@ function Homepage() {
           <section>
             <h1>{theme.themeText[language].titleSectionGadget}</h1>
             <ImageContainer src={gadget[0].url}></ImageContainer>
+
             <p className="right">{theme.themeText[language].titleGadget}</p>
           </section>
         </SectionContainer>
