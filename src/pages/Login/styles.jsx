@@ -8,7 +8,7 @@ export const LoginContainer = styled.div`
 
 export const ProductContainer = styled.div`
   width: 100%;
-  height: 100%;
+
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -19,11 +19,10 @@ export const ProductContainer = styled.div`
 `;
 
 export const FormContainer = styled.div`
-  height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column;
   margin-bottom: 20px;
 

@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 export const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  justify-content: space-between;
+  height: 100%;
 `;
 
 export const HeaderStyle = styled.header`

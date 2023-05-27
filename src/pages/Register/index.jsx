@@ -80,7 +80,9 @@ function register() {
           </ul>
         </FormContainer>
       ) : (
-        <h1>{theme.themeText[language].nothing}</h1>
+        <FormContainer>
+          <h1>{theme.themeText[language].nothing}</h1>
+        </FormContainer>
       )}
     </div>
   );
