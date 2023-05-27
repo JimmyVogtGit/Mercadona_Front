@@ -5,6 +5,7 @@ import {
   AsideContainer,
   CatalogContainer,
   Container,
+  NoProductContainer,
 } from "./styles";
 
 function Catalog() {
@@ -27,7 +28,9 @@ function Catalog() {
       <CatalogContainer>
         <ListCatalogContainer>
           {filteredCat.length === 0 ? (
-            <p>{theme.themeText[language].noProduct}</p>
+            <NoProductContainer>
+              <p>{theme.themeText[language].noProduct}</p>
+            </NoProductContainer>
           ) : (
             filteredCat.map((product, index) => {
               return (
