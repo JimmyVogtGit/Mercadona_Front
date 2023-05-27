@@ -13,6 +13,7 @@ import {
   LinkStyle,
   SpanContainer,
   FooterContainer,
+  AppContainer,
 } from "./styles";
 import { AuthContext } from "./store/AuthContext";
 
@@ -21,7 +22,7 @@ function App() {
   useEffect(() => {}, [create]);
 
   return (
-    <>
+    <AppContainer>
       <HeaderStyle>
         <LinkStyle to="/">
           <h1>
@@ -51,7 +52,7 @@ function App() {
       {isModal.isOpen && (
         <Modal type={isModal.type} id={isModal.is} wording={isModal.wording} />
       )}
-    </>
+    </AppContainer>
   );
 }
 
