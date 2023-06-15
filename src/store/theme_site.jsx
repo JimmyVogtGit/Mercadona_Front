@@ -192,6 +192,7 @@ const themeButton = {
     addPromo: "Ajouter promo",
     createProduct: "Creer un produit",
     createPromo: "Creer une promo",
+    exportPdf: "Exporter pdf",
   },
   es: {
     catalog: "Catálogo",
@@ -200,6 +201,7 @@ const themeButton = {
     addPromo: "Añadir promoción",
     createProduct: "Crear un producto",
     createPromo: "creación de la promoción",
+    exportPdf: "Exportador pdf",
   },
 };
 

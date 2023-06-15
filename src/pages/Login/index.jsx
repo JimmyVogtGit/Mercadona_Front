@@ -79,6 +79,13 @@ function login() {
           >
             {theme.themeButton[language].createProduct}
           </Button>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={() => setIsModal({ isOpen: true, type: "PRODUCT" })}
+          >
+            {theme.themeButton[language].exportPdf}
+          </Button>
           <ProductContainer>
             {productList.map((product, index) => {
               return (
