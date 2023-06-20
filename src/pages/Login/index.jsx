@@ -26,6 +26,7 @@ function login() {
     setIsModal,
     language,
     theme,
+    handleDownloadPDF,
   } = hook();
 
   return (
@@ -82,7 +83,7 @@ function login() {
           <Button
             variant="contained"
             color="success"
-            onClick={() => setIsModal({ isOpen: true, type: "PRODUCT" })}
+            onClick={handleDownloadPDF}
           >
             {theme.themeButton[language].exportPdf}
           </Button>

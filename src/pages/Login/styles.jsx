@@ -4,6 +4,10 @@ export const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  button {
+    margin: 20px;
+  }
 `;
 
 export const ProductContainer = styled.div`
