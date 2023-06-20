@@ -1,2 +1,2 @@
-VITE_LOCAL_ENDPOINT = 
-VITE_DEPLOY_ENDPOINT =
+VITE_LOCAL_ENDPOINT = <url_de_developement>
+VITE_DEPLOY_ENDPOINT = <url_de_production>

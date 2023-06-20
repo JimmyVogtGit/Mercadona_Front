@@ -152,7 +152,7 @@ const themeText = {
     isPromo: "En promotion",
     noProduct: "Aucun produit trouvé",
     welcomeAdmin: "Bienvenue",
-    catalog: "Notre catalogue de Produit",
+    catalog: "Notre catalogue de produits",
     welcome: "Bienvenue sur le site de Mercadona Retail",
     titleSectionDescribe: "The Best place",
     titleSectionGadget: "Des gadgets en tout genre",
@@ -192,6 +192,7 @@ const themeButton = {
     addPromo: "Ajouter promo",
     createProduct: "Creer un produit",
     createPromo: "Creer une promo",
+    exportPdf: "Exporter pdf",
   },
   es: {
     catalog: "Catálogo",
@@ -200,6 +201,7 @@ const themeButton = {
     addPromo: "Añadir promoción",
     createProduct: "Crear un producto",
     createPromo: "creación de la promoción",
+    exportPdf: "Exportador pdf",
   },
 };
 

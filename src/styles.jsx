@@ -1,6 +1,13 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+export const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+`;
+
 export const HeaderStyle = styled.header`
   display: flex;
   justify-content: space-between;
@@ -30,8 +37,6 @@ export const SpanContainer = styled.span`
 `;
 
 export const FooterContainer = styled.footer`
-  position: fixed;
-  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: flex-end;

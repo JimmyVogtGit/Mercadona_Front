@@ -52,6 +52,7 @@ export const AsideContainer = styled.aside`
     background-color: rgb(224, 39, 39);
     width: 80%;
     align-items: center;
+    justify-content: center;
     height: 70px;
     overflow-x: auto;
     white-space: nowrap;
@@ -68,7 +69,8 @@ export const AsideContainer = styled.aside`
 `;
 
 export const ListCatalogContainer = styled.div`
-  height: 100%;
+  width: 100%;
+
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -77,4 +79,9 @@ export const ListCatalogContainer = styled.div`
   @media only screen and (max-width: 600px) {
     flex-direction: column;
   }
+`;
+
+export const NoProductContainer = styled.div`
+  margin: 0;
+  height: 100vh;
 `;

@@ -4,13 +4,16 @@ export const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  button {
+    margin: 20px;
+  }
 `;
 
 export const ProductContainer = styled.div`
   width: 100%;
-  height: 100%;
+
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 
@@ -20,13 +23,12 @@ export const ProductContainer = styled.div`
 `;
 
 export const FormContainer = styled.div`
-  position: absolute;
-  height: 30%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 20px;
 
   form {
     display: flex;

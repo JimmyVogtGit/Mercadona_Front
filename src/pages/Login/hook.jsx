@@ -1,5 +1,15 @@
 import { useForm } from "react-hook-form";
 
+import {
+  Page,
+  Text,
+  View,
+  Document,
+  StyleSheet,
+  pdf,
+  Image,
+} from "@react-pdf/renderer";
+import { saveAs } from "file-saver";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import Toastify from "toastify-js";
@@ -67,6 +77,68 @@ function useFormHandler(defaultValues = {}) {
     }
   };
 
+  const styles = StyleSheet.create({
+    page: {
+      fontFamily: "Helvetica",
+      fontSize: 12,
+      padding: 20,
+    },
+    section: {
+      marginBottom: "auto",
+      display: "flex",
+      flexDirection: "row",
+    },
+    title: {
+      marginBottom: 20,
+    },
+    text: {
+      marginRight: 10,
+    },
+    textColor: {
+      color: "red",
+    },
+    img: {
+      marginLeft: 50,
+      height: 100,
+      width: 100,
+    },
+  });
+
+  const handleDownloadPDF = async () => {
+    const content = (
+      <Document>
+        <Page size="A4" style={styles.page}>
+          <Text style={styles.title}>Liste des produits en promotion</Text>
+          {productList
+            .filter((promo) => promo.promotion.length !== 0)
+            .map((eachPromo, index) => (
+              <View key={index} style={styles.section}>
+                <Text style={styles.text}>{eachPromo.wording}</Text>
+                <Text style={styles.text}>{eachPromo.price}</Text>
+                <Text style={styles.textColor}>
+                  {parseInt(eachPromo.price) -
+                    (parseInt(eachPromo.price) *
+                      parseInt(eachPromo.promotion[0].percentage)) /
+                      100}
+                </Text>
+                <Image
+                  src={
+                    theme.themeImg.filter(
+                      (cat) => cat.catName === eachPromo.category
+                    )[0].url
+                  }
+                  style={styles.img}
+                />
+              </View>
+            ))}
+        </Page>
+      </Document>
+    );
+
+    const blob = await pdf(content).toBlob(); // Convert to Blob
+    saveAs(blob, "mon_fichier.pdf");
+  };
+
   return {
     register,
     handleSubmit,
@@ -81,6 +153,7 @@ function useFormHandler(defaultValues = {}) {
     setIsModal,
     language,
     theme,
+    handleDownloadPDF,
   };
 }
 
