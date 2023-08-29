@@ -39,3 +39,7 @@ export const FormContainer = styled.div`
     margin-top: 10px;
   }
 `;
+export const ErrorTextForm = styled.span`
+  color: red;
+  margin: 10px;
+`;

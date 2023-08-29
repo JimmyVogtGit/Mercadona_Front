@@ -11,7 +11,12 @@ import {
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { ProductContainer, LoginContainer, FormContainer } from "./styles";
+import {
+  ProductContainer,
+  LoginContainer,
+  FormContainer,
+  ErrorTextForm,
+} from "./styles";
 function login() {
   const {
     register,
@@ -38,8 +43,9 @@ function login() {
             <TextField
               label={theme.themeForm[language].userName}
               {...register("username", { required: true })}
-              error={errors.username}
+              error={errors?.username?.message}
             />
+            <ErrorTextForm>{errors?.username?.message}</ErrorTextForm>
             <FormControl variant="outlined">
               <InputLabel htmlFor="outlined-adornment-password">
                 {theme.themeForm[language].password}
@@ -48,7 +54,7 @@ function login() {
                 id="outlined-adornment-password"
                 type={showPassword ? "text" : "password"}
                 {...register("password", { required: true })}
-                error={errors.password}
+                error={errors?.password?.message}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
@@ -62,6 +68,7 @@ function login() {
                 }
                 label="Password"
               />
+              <ErrorTextForm>{errors?.password?.message}</ErrorTextForm>
             </FormControl>
             <Button variant="contained" type="submit" disabled={false}>
               {theme.themeForm[language].submit}
