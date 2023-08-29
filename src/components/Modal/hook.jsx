@@ -12,9 +12,6 @@ function useModalHook() {
       describe: yup.string().required("Description erroné"),
       price: yup.number().required("Prix erroné"),
       category: yup.string().required("Catégory erronée"),
-      percent: yup.number().required("Prix erroné"),
-      startDate: yup.date().required(),
-      endDate: yup.date().required(),
     })
     .required();
 
