@@ -14,6 +14,7 @@ import {
   ModalContainer,
   FormContainer,
   Container,
+  ErrorTextForm,
 } from "./styles";
 
 function modal() {
@@ -42,25 +43,28 @@ function modal() {
               <TextField
                 label={theme.themeForm[language].wording}
                 {...register("wording", { required: true })}
-                error={errors.wording}
+                error={errors?.wording?.message}
               />
+              <ErrorTextForm>{errors?.wording?.message}</ErrorTextForm>
               <TextField
                 label={theme.themeForm[language].describe}
                 {...register("describe", { required: true })}
-                error={errors.describe}
+                error={errors?.describe?.message}
               />
+              <ErrorTextForm>{errors?.describe?.message}</ErrorTextForm>
               <TextField
                 label={theme.themeForm[language].price}
                 {...register("price", { required: true })}
-                error={errors.price}
+                error={errors?.price?.message}
               />
+              <ErrorTextForm>{errors?.price?.message}</ErrorTextForm>
               <FormControl>
                 <InputLabel>{theme.themeForm[language].category}</InputLabel>
                 <Select
                   value={category}
                   label={theme.themeForm[language].category}
                   {...register("category", { required: true })}
-                  error={errors.category}
+                  error={errors?.category?.message}
                   onChange={handleChange}
                 >
                   {categoryList.map((cat, index) => (
@@ -70,7 +74,7 @@ function modal() {
                   ))}
                 </Select>
               </FormControl>
-
+              <ErrorTextForm>{errors?.category?.message}</ErrorTextForm>
               <Button variant="contained" type="submit" disabled={false}>
                 {theme.themeButton[language].createProduct}
               </Button>
@@ -95,8 +99,9 @@ function modal() {
                   max: 100,
                 }}
                 {...register("percent", { required: true })}
-                error={errors.percent}
+                error={errors?.percent?.message}
               />
+              <ErrorTextForm>{errors?.percent?.message}</ErrorTextForm>
               <TextField
                 label={theme.themeForm[language].startDate}
                 type="date"
@@ -104,8 +109,9 @@ function modal() {
                   startAdornment: <InputAdornment position="start" />,
                 }}
                 {...register("startDate", { required: true })}
-                error={errors.startDate}
+                error={errors?.startDate?.message}
               />
+              <ErrorTextForm>{errors?.startDate?.message}</ErrorTextForm>
               <TextField
                 label={theme.themeForm[language].endDate}
                 type="date"
@@ -113,8 +119,9 @@ function modal() {
                   startAdornment: <InputAdornment position="start" />,
                 }}
                 {...register("endDate", { required: true })}
-                error={errors.endDate}
+                error={errors?.endDate?.message}
               />
+              <ErrorTextForm>{errors?.endDate?.message}</ErrorTextForm>
               <Button variant="contained" type="submit" disabled={false}>
                 {theme.themeButton[language].createPromo}
               </Button>

@@ -42,3 +42,8 @@ export const FormContainer = styled.form`
     font-weight: bold;
   }
 `;
+
+export const ErrorTextForm = styled.span`
+  color: red;
+  margin: 10px;
+`;
