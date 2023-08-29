@@ -1,4 +1,6 @@
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 import {
   Page,
@@ -15,14 +17,21 @@ import { useContext, useEffect, useState } from "react";
 import Toastify from "toastify-js";
 import { AuthContext } from "../../store/AuthContext";
 
-function useFormHandler(defaultValues = {}) {
+function useFormHandler() {
+  const schema = yup
+    .object({
+      username: yup.string().required("Ajoutez un nom d'utilisateur"),
+      password: yup.string().required("Ajoutez un mot de passe"),
+    })
+    .required();
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm({
-    defaultValues,
+    resolver: yupResolver(schema),
   });
 
   const {
